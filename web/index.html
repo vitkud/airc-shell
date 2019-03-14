@@ -1,31 +1,76 @@
-<html>
+<html lang="en">
     <head>
-        <title>Test enviroment</title>
-        <style>
-            .cc {
-                display: block;
-            }
+        <title>Untill Air Shell - Login</title>
 
-            img {
-                background-color: #efefef;
-            }
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/main.css">
 
-            .button {
-                width: 200px;
-                height: 40px;
-                background-color: #434343;
-            }
-        </style>
-
-        <link rel="stylesheet" href="css/untill-icons.css">
+        <link href="../base/css/untill-base.css" rel="stylesheet" media="all">
     </head>
 
     <body>
-       <div class="button">
-            <span class="icon-app-store" style="color: #fff;">
-                <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>
-            </span>
-       </div>
-        
+        <div class="--container">
+            <div class="--wrapper">
+                <div class="ushell-container">
+                    <div class="ushell-login-container">
+                        <div class="ushell-login-block paper">
+                            <div class="ushell-login-block-logo">
+                                <img src="img/logo-rounded.svg">
+                            </div>
+
+                            <div class="ushell-login-block-title">
+                                Welcome back!
+                            </div>
+
+                            <div class="ushell-login-block-illustration">
+                                <img src="../base/images/Illustrations/log-in.svg">
+                            </div>
+
+                            <div class="ushell-login-block-form">
+                                <div class="form-row">
+                                    <label class="form-input-label">Username</label>
+                                    <input class="form-input" type="text" >
+                                </div>
+
+                                <div class="form-row">
+                                    <label class="form-input-label">Password</label>
+                                    <a href="#">Forgot password?</a>
+                                    <input class="form-input" type="password">
+                                </div>
+
+                                <div class="form-row last">
+                                    <input class="button form-submit" type="submit" value="Sign in">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ushell-login-bottom-navigation">
+                            <ul>
+                                <li><a href="#">Homepage</a></li>
+                                <li><a href="#">Knowledge base</a></li>
+                                <li><a href="#">App store</a></li>
+                                <li><a href="#">Google play</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="ushell-footer">
+                        <div class="content-container">
+                            <div class="ushell-footer-left">
+                                &copy; 2019 Untill. All rights reserved.
+                            </div>
+                            <div class="ushell-footer-center">
+                                Untill Web Managment
+                            </div>
+                            <div class="ushell-footer-right">
+                                UI version: 2.23.1.0<br />
+                                Installer version: 129.0.A
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../base/js/untill-base.js"></script>
     </body>
 </html>

@@ -1,0 +1,380 @@
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  normal;
+  font-weight: 100;
+  src: url("fonts/Inter-UI-Thin-BETA.woff2") format("woff2"),
+       url("fonts/Inter-UI-Thin-BETA.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  italic;
+  font-weight: 100;
+  src: url("fonts/Inter-UI-ThinItalic-BETA.woff2") format("woff2"),
+       url("fonts/Inter-UI-ThinItalic-BETA.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  normal;
+  font-weight: 200;
+  src: url("fonts/Inter-UI-ExtraLight-BETA.woff2") format("woff2"),
+       url("fonts/Inter-UI-ExtraLight-BETA.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  italic;
+  font-weight: 200;
+  src: url("fonts/Inter-UI-ExtraLightItalic-BETA.woff2") format("woff2"),
+       url("fonts/Inter-UI-ExtraLightItalic-BETA.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  normal;
+  font-weight: 300;
+  src: url("fonts/Inter-UI-Light-BETA.woff2") format("woff2"),
+       url("fonts/Inter-UI-Light-BETA.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  italic;
+  font-weight: 300;
+  src: url("fonts/Inter-UI-LightItalic-BETA.woff2") format("woff2"),
+       url("fonts/Inter-UI-LightItalic-BETA.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  normal;
+  font-weight: 400;
+  src: url("fonts/Inter-UI-Regular.woff2") format("woff2"),
+       url("fonts/Inter-UI-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  italic;
+  font-weight: 400;
+  src: url("fonts/Inter-UI-Italic.woff2") format("woff2"),
+       url("fonts/Inter-UI-Italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  normal;
+  font-weight: 500;
+  src: url("fonts/Inter-UI-Medium.woff2") format("woff2"),
+       url("fonts/Inter-UI-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  italic;
+  font-weight: 500;
+  src: url("fonts/Inter-UI-MediumItalic.woff2") format("woff2"),
+       url("fonts/Inter-UI-MediumItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  normal;
+  font-weight: 600;
+  src: url("fonts/Inter-UI-SemiBold.woff2") format("woff2"),
+       url("fonts/Inter-UI-SemiBold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  italic;
+  font-weight: 600;
+  src: url("fonts/Inter-UI-SemiBoldItalic.woff2") format("woff2"),
+       url("fonts/Inter-UI-SemiBoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  normal;
+  font-weight: 700;
+  src: url("fonts/Inter-UI-Bold.woff2") format("woff2"),
+       url("fonts/Inter-UI-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  italic;
+  font-weight: 700;
+  src: url("fonts/Inter-UI-BoldItalic.woff2") format("woff2"),
+       url("fonts/Inter-UI-BoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  normal;
+  font-weight: 800;
+  src: url("fonts/Inter-UI-ExtraBold.woff2") format("woff2"),
+       url("fonts/Inter-UI-ExtraBold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  italic;
+  font-weight: 800;
+  src: url("fonts/Inter-UI-ExtraBoldItalic.woff2") format("woff2"),
+       url("fonts/Inter-UI-ExtraBoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  normal;
+  font-weight: 900;
+  src: url("fonts/Inter-UI-Black.woff2") format("woff2"),
+       url("fonts/Inter-UI-Black.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter UI';
+  font-style:  italic;
+  font-weight: 900;
+  src: url("fonts/Inter-UI-BlackItalic.woff2") format("woff2"),
+       url("fonts/Inter-UI-BlackItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'untill-icons';
+  src:  url('fonts/icons/untill-icons.eot?kmi4wt');
+  src:  url('fonts/icons/untill-icons.eot?kmi4wt#iefix') format('embedded-opentype'),
+    url('fonts/icons/untill-icons.ttf?kmi4wt') format('truetype'),
+    url('fonts/icons/untill-icons.woff?kmi4wt') format('woff'),
+    url('fonts/icons/untill-icons.svg?kmi4wt#untill-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+:root {
+    --color-brand: #0277e7;
+    --color-brand-dark: #025fb9;
+    --color-info: #0277e7;
+    --color-success: #36ab80;
+    --color-warning: #f7af22;
+    --color-danger: #f4541d;
+
+    --color-text-dark: #051d39;  /* usage: main headings, active text, input text */
+    --color-text-medium: #506174; /* usage: lists, input labels, placeholders */
+    --color-text-light: #8a94a6; /* usage: secondary text, placeholders */
+    --color-text-disabled: #b0b7c3; /* usage: disabled text */
+
+    --box-shadow-z-1: 0px 1px 1px rgba(10, 22, 70, 0.1);
+    --box-shadow-z-2: 0px 3px 3px rgba(5, 29, 57, 0.1);
+    --box-shadow-z-3: 0px 6px 6px rgba(5, 29, 57, 0.1);
+    --box-shadow-z-4: 0px 16px 16px rgba(5, 29, 57, 0.1);
+    --box-shadow-z-5: 0px 32px 40px rgba(5, 29, 57, 0.12);
+}
+
+body {
+    color: var(--color-text-dark);
+    font-size: 12pt;
+    font-family: "Inter UI", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+i {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: "untill-icons" !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.content-container {
+  max-width: 1400px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.paper {
+  background-color: #fff;
+  box-shadow: var(--box-shadow-z-1);
+  border-radius: 10px;
+}
+
+/* icons */
+
+.icon-add-row:before {
+    content: "\e900";
+  }
+  .icon-alert:before {
+    content: "\e901";
+  }
+  .icon-arrow-left:before {
+    content: "\e902";
+  }
+  .icon-arrow-right:before {
+    content: "\e903";
+  }
+  .icon-arrow-up:before {
+    content: "\e904";
+  }
+  .icon-bargrid:before {
+    content: "\e905";
+  }
+  .icon-bchart:before {
+    content: "\e906";
+  }
+  .icon-b-chart-2:before {
+    content: "\e907";
+  }
+  .icon-calendar:before {
+    content: "\e908";
+  }
+  .icon-calendar-check:before {
+    content: "\e909";
+  }
+  .icon-charts-bar-grid:before {
+    content: "\e90a";
+  }
+  .icon-charts-donut:before {
+    content: "\e90b";
+  }
+  .icon-charts-gauge:before {
+    content: "\e90c";
+  }
+  .icon-charts-horizontal:before {
+    content: "\e90d";
+  }
+  .icon-charts-list:before {
+    content: "\e90e";
+  }
+  .icon-charts-pie:before {
+    content: "\e90f";
+  }
+  .icon-charts-verical:before {
+    content: "\e910";
+  }
+  .icon-checked:before {
+    content: "\e911";
+  }
+  .icon-close-solid:before {
+    content: "\e912";
+  }
+  .icon-cross:before {
+    content: "\e913";
+  }
+  .icon-delete-solid:before {
+    content: "\e914";
+  }
+  .icon-doughnut:before {
+    content: "\e915";
+  }
+  .icon-edit:before {
+    content: "\e916";
+  }
+  .icon-edit-solid:before {
+    content: "\e917";
+  }
+  .icon-eye-solid:before {
+    content: "\e918";
+  }
+  .icon-filter:before {
+    content: "\e919";
+  }
+  .icon-font-bold:before {
+    content: "\e91a";
+  }
+  .icon-font-italic:before {
+    content: "\e91b";
+  }
+  .icon-font-underline:before {
+    content: "\e91c";
+  }
+  .icon-full-screen:before {
+    content: "\e91d";
+  }
+  .icon-gauge-chart:before {
+    content: "\e91e";
+  }
+  .icon-grid:before {
+    content: "\e91f";
+  }
+  .icon-group-by-column:before {
+    content: "\e920";
+  }
+  .icon-hide:before {
+    content: "\e921";
+  }
+  .icon-info-solid:before {
+    content: "\e922";
+  }
+  .icon-link:before {
+    content: "\e923";
+  }
+  .icon-lock-solid:before {
+    content: "\e924";
+  }
+  .icon-menu:before {
+    content: "\e925";
+  }
+  .icon-move-arrows:before {
+    content: "\e926";
+  }
+  .icon-notification:before {
+    content: "\e927";
+  }
+  .icon-options:before {
+    content: "\e928";
+  }
+  .icon-piechart:before {
+    content: "\e929";
+  }
+  .icon-plus:before {
+    content: "\e92a";
+  }
+  .icon-preferences:before {
+    content: "\e92b";
+  }
+  .icon-refresh:before {
+    content: "\e92c";
+  }
+  .icon-save:before {
+    content: "\e92d";
+  }
+  .icon-save-as:before {
+    content: "\e92e";
+  }
+  .icon-search:before {
+    content: "\e92f";
+  }
+  .icon-success:before {
+    content: "\e930";
+  }
+  .icon-tilegrid:before {
+    content: "\e931";
+  }
+  .icon-timestamp:before {
+    content: "\e932";
+  }
+  .icon-to-do:before {
+    content: "\e933";
+  }
+  .icon-total:before {
+    content: "\e934";
+  }
+  .icon-unify:before {
+    content: "\e935";
+  }
+  .icon-up-down-arrows:before {
+    content: "\e936";
+  }
+  .icon-view-grid:before {
+    content: "\e937";
+  }
+  .icon-view-rows:before {
+    content: "\e938";
+  }
+  .icon-zoom-in:before {
+    content: "\e939";
+  }
+  .icon-zoom-out:before {
+    content: "\e93a";
+  }
+  
