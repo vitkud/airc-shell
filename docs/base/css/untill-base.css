@@ -199,6 +199,26 @@ i {
   border-radius: 10px;
 }
 
+.clear, .cle {
+  clear: both;
+}
+
+.clear-left, .clel {
+  clear: left;
+}
+
+.clear-right, .cler {
+  clear: right;
+}
+
+.float-left, .fl {
+  float: left;
+}
+
+.float-right, .fr {
+  float: right;
+}
+
 /* icons */
 
 .icon-add-row:before {
