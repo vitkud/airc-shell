@@ -84,16 +84,21 @@ a:hover {
 	width: 60%;
 	top: 0pt;
 	left: 5%;
+	box-shadow: 10pt 10pt 20pt rgba(0, 0, 0, 0.4);
+	transition: all 0.5s;
+	
 }
 
 .main_page_preview_block .pic:hover {
 	z-index: 50 !important;
+	box-shadow: 10pt 10pt 20pt rgba(0, 0, 0, 0.7);
+	transform: scale(1.03);
 }
 
 .main_page_preview_block .pic img {
 	display: block;
 	width: 100%;
-	box-shadow: 10pt 10pt 20pt rgba(0, 0, 0, 0.5);
+	
 }
 
 .main_page_preview_block .pic._stage_1 {

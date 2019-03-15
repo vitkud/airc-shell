@@ -1,3 +1,9 @@
+:root {
+    --header-nav-link-color: #000;
+    --header-nav-link-hover-color: #000;
+    --header-nav-link-active-color: #000;
+}
+
 html {
     background-color: #F5F8FA;
     height: 100%;
@@ -52,4 +58,123 @@ body {
 .ushell-header {
     background-color: #fff;
     box-shadow: var(--box-shadow-z-1);
+}
+
+.ushell-header a {
+    color: var(--header-nav-link-color);
+    text-decoration: none;
+}
+
+.ushell-header a ico {
+    fill: var(--header-nav-link-color);
+}
+
+.ushell-header a:hover {
+    color: var(--header-nav-link-hover-color);
+}
+
+.ushell-header a:hover ico {
+    fill: var(--header-nav-link-hover-color);
+}
+
+.ushell-header-container {
+    box-sizing: border-box;
+    padding-left: 100px;
+    position: relative;
+}
+
+.ushell-header-logo {
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+.ushell-header-logo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.ushell-header-action-pane {
+    float: right;
+    text-align: right;
+    padding: 20px 0px;
+}
+
+.ushell-header-action-pane-btn {
+    display: inline-block;
+    vertical-align: middle;
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    background-color: var(--color-light-600);
+
+    position: relative;
+}
+
+
+.ushell-header-nav-activity-bar {
+    font-size: 13pt;
+    font-weight: 200;
+}
+
+.ushell-header-nav-activity-bar ul {
+    list-style: none;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+}
+
+.ushell-header-nav-activity-bar ul li {
+    display: inline-block;
+    padding: 35px 15px 25px;
+    line-height: 20px;
+    position: relative;
+}
+
+.ushell-header-nav-activity-bar ul li.active:after {
+    content: ' ';
+    width: 100%;
+    height: 4px;
+    border-radius: 100px 100px 0px 0px;
+
+    position: absolute;
+    background-color: var(--color-brand);
+
+    bottom: 0px;
+    left: 0px;
+}
+
+.ushell-header-views-bar {
+    font-size: 11pt;
+    border-top: 1px solid var(--color-light-400);
+}
+
+.ushell-header-views-bar ul {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+}
+
+.ushell-header-views-bar ul li {
+    display: inline-block;
+    padding: 15px;
+    line-height: 1;
+    position: relative;
+}
+
+.ushell-header-views-bar ul li.active:after {
+    content: ' ';
+    width: 100%;
+    height: 4px;
+    border-radius: 100px 100px 0px 0px;
+
+    position: absolute;
+    background-color: var(--color-brand);
+
+    bottom: 0px;
+    left: 0px;
 }
