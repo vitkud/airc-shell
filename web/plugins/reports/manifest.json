@@ -1,0 +1,6 @@
+{
+	"name": "Reports",
+	"url": "/plugins/reports/index.php",
+	"code": "reports",
+	"order": 1
+}

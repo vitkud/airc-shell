@@ -1,0 +1,6 @@
+{
+	"name": "Back Office",
+	"url": "/plugins/bo/index.php",
+	"code": "bo",
+	"order": 2
+}

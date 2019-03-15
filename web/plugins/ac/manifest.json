@@ -1,0 +1,6 @@
+{
+	"name": "Action Center",
+	"url": "/plugins/ac/index.php",
+	"code": "activity_center",
+	"order": 0
+}

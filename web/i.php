@@ -3,6 +3,13 @@
         <title>Untill Air Shell - Home page</title>
         
         <link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="https://raw.githubusercontent.com/untillpro/untill-air-shell/master/base/css/untill-base.css" />
+		
+		
+		<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://raw.githubusercontent.com/untillpro/untill-air-shell/master/base/js/untill-base.js"></script>
+		<script src="/js/api.js?v=<?=date('U')?>"></script>
     </head>
 
     <body>
@@ -17,30 +24,8 @@
                         </div>
 
                         <div class="ushell-header-nav">
-                            <nav class="ushell-header-nav-activity-bar">
-                                <ul>
-                                    <li>
-                                        <a href="#">Home</a>
-                                    </li>
-
-                                    
-                                    <li>
-                                        <a href="#">Reports</a>
-                                    </li>
-
-                                        
-                                    <li>
-                                        <a href="#">Back office</a>
-                                    </li>
-                                        
-                                    <li>
-                                        <a href="#">Manage app</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">Action center</a>
-                                    </li>
-                                </ul>
+                            <nav class="ushell-header-nav-activity-bar" id="sidebar">
+                                
                             </nav>
                         </div>
 
@@ -60,7 +45,7 @@
                     </div>
 
                     <div class="ushell-working-area">
-                        
+                        <iframe id="plugin-manager" onload="resizeIframe(this)"></iframe>
                     </div>
 
                     <div class="ushell-footer">
@@ -69,11 +54,11 @@
                 </div>
             </div>
         </div>
-
-        
-        <link rel="stylesheet" href="css/main.css">
-        <ling rel="stylesheet" href="../base/untill-base.css" />
-
-        <script src="../base/untill-base.js"></script>
+		
+		<div class="--loading">
+			<div class="--logo-prelaoder">
+				<img src="/img/logo-rounded.svg">
+			</div>
+		</div>
     </body>
 </html>
