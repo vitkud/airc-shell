@@ -169,6 +169,7 @@ body {
     color: var(--color-text-dark);
     font-size: 12pt;
     font-family: "Inter UI", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+    background-color: #000;
 }
 
 i {
