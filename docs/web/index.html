@@ -1,5 +1,7 @@
 <html class="main" lang="en">
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
         <title>Untill Air Shell - Home page</title>
         
         <link rel="stylesheet" href="css/reset.css">
@@ -7,9 +9,8 @@
         <link rel="stylesheet" href="../base/css/untill-base.css" />
 		
 		
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="js//jquery-3.3.1.min.js"></script>
 		<script src="../base/js/untill-base.js"></script>
-		<script src="js/_api.js?v=1"></script>
     </head>
 
     <body>
@@ -26,16 +27,16 @@
                             <div class="ushell-header-nav">
                                 <div class="ushell-header-action-pane">
                                     <a href="#" class="ushell-header-action-pane-btn with-icon">
-                                        <span class="badge right">2</span>
+                                        <img src='../base/images/icons/black-set/to-do.svg'>
+                                        <span class="badge bottom right danger">2</span>
                                     </a>
 
                                     <a href="#" class="ushell-header-action-pane-btn with-icon">
-                                        <span class="badge bottom right red"></span>
+                                        <img src='../base/images/icons/black-set/notification.svg'>
+                                        <span class="badge bottom right success">10</span>
                                     </a>
 
-                                    <a href="#" class="ushell-header-action-pane-btn user">
-                                        
-                                    </a>
+                                    <a href="#" class="ushell-header-action-pane-btn user" style="background-image: url(img/user_stub.png)"></a>
                                 </div>
 
                                 <div class="ushell-header-activity-bar">
@@ -43,31 +44,31 @@
                                         <ul>
                                             <li>
                                                 <a href="#">
-                                                    Home
+                                                    <span>Home</span>
                                                 </a>
                                             </li>
 
                                             <li>
                                                 <a href="#">
-                                                    Reports
+                                                    <span>Reports</span>
                                                 </a>
                                             </li>
 
                                             <li>
                                                 <a href="#">
-                                                    Back office
+                                                    <span>Back office</span>
                                                 </a>
                                             </li>
 
                                             <li class="active">
                                                 <a href="#">
-                                                    Manage app
+                                                    <span>Manage app</span>
                                                 </a>
                                             </li>
 
                                             <li>
                                                 <a href="#">
-                                                    Action center
+                                                    <span>Action center</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -81,73 +82,73 @@
                                     <ul>
                                         <li class="active">
                                             <a href="#">
-                                                Database
+                                                <span>Database</span>
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#">
-                                                Locations    
+                                                <span>Locations</span>    
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#">
-                                                Features            
+                                                <span>Features</span>            
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#">
-                                                Users            
+                                                <span>Users</span>            
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#">
-                                                Roles                
+                                                <span>Roles</span>                
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#">
-                                                Email                
+                                                <span>Email</span>                
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#">
-                                                Periods                
+                                                <span>Periods</span>                
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#">
-                                                Data import                
+                                                <span>Data import</span>                
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#">
-                                                Documents                
+                                                <span>Documents</span>                
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#">
-                                                Another section                
+                                                <span>Another section</span>                
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#">
-                                                Yet another section                
+                                                <span>Yet another section</span>                
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#">
-                                                Last section                
+                                                <span>Last section</span>                
                                             </a>
                                         </li>
                                     </ul>
@@ -158,11 +159,26 @@
                     </div>
 
                     <div class="ushell-working-area">
-                        <iframe id="plugin-manager" onload="resizeIframe(this)"></iframe>
+                        <iframe id="plugin-manager" onload="//resizeIframe(this)"></iframe>
+
+                        <div class="test" style="background-color: #ff0000; height: 500px;">
+                            
+                        </div>
                     </div>
 
                     <div class="ushell-footer">
-
+                        <div class="content-container ushell-footer-container">
+                            <div class="ushell-footer-left">
+                                &copy; <span id="dateyear"></span> Untill. All rights reserved.
+                            </div>
+                            <div class="ushell-footer-center">
+                                unTill Web Managment
+                            </div>
+                            <div class="ushell-footer-right">
+                                UI version: <span id="ui_version"></span><br>
+                                Installer version: <span id="inst_version"></span><br>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -170,8 +186,12 @@
 		
 		<div class="--loading">
 			<div class="--logo-prelaoder">
-				<img src="/img/logo-rounded.svg">
+				<div class="--logo-prelaoder-cc"></div>
 			</div>
-		</div>
+        </div>
+        
+        <script src="js/api.js?v=1"></script>
+        <script src="js/main.js?v=1"></script>
+
     </body>
 </html>

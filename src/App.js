@@ -1,43 +1,21 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import configureStore from 'configureStore';
+
+import MainContainer from './components/MainContainer';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      component: null
-    };
-  }
-
-  handleClick = () => {
-
-    import('./components/A')
-      .then((res) => {
-        console.log(res.default);
-        this.setState({ component: res.default });
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  };
-
-  renderComponent() {
-    const { component } = this.state;
-
-    if ( component ) {
-      const Module = component;
-      return <Module />;
-    }
-    
-
-    return (<div>empty</div>);
-  }
-
   render() {
+    const cfg = configureStore();
+
     return (
-      <div>
-        {this.renderComponent()}
-        <button onClick={this.handleClick}>Load</button>
-      </div>
+      <Provider store={cfg.store}>
+        <PersistGate loading={null} persistor={cfg.persistor}>
+          <MainContainer />
+        </PersistGate>
+      </Provider>
     );
   }
 }

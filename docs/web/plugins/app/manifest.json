@@ -1,6 +1,0 @@
-{
-	"name": "Manage App",
-	"url": "/plugins/app/index.php",
-	"code": "manage_app",
-	"order": 3
-}
