@@ -16,7 +16,6 @@ body {
 }
 
 .--container {
-    position: relative;
     min-height: 100%;
 }
 
@@ -68,8 +67,8 @@ body {
 
     background-color: #000;
 
-    animation: reploader_cc 1.5s ease-in-out infinite;
-    -webkit-animation: reploader_cc 1.5s ease-in-out infinite;
+    animation: preloader_cc 1.5s ease-in-out infinite;
+    -webkit-animation: preloader_cc 1.5s ease-in-out infinite;
 
     opacity: 0.2;
 }
@@ -79,7 +78,7 @@ body {
     color: var(--color-brand);
 }
 
-@keyframes reploader_cc {
+@keyframes preloader_cc {
     from { height: 0%; }
     to { height: 100%; }
 }

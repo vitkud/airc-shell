@@ -10,7 +10,10 @@ import AuthModal from 'components/shell/modals/AuthModal';
 import Footer from 'components/shell/common/Footer';
 
 //assets
+import 'assets/css/reset.css';
+import 'base/css/untill-base.css';
 import 'assets/css/main.css';
+
 
 class MainContainer extends Component {
     renderScreen() {
@@ -34,12 +37,10 @@ class MainContainer extends Component {
     render() {
         return (
             <Fragment>
-                <div className="--container">
-                    <div className="--wrapper">
-                        {this.renderScreen()}
-                        
-                        <Footer />
-                    </div>
+                <div className="--wrapper">
+                    {this.renderScreen()}
+                    
+                    <Footer />
                 </div>
 
                 {this.renderReAuthPopup()}
