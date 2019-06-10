@@ -6,16 +6,31 @@ import ReduxThunk from 'redux-thunk';
 
 import rootReducer from 'reducers';
  
+import {
+  APPLY_MANIFEST
+} from './actions/types';
+
+
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['pos', 'server', 'cmenu', 'settings'] 
+  blacklist: [ 'cp', 'ui' ] 
 };
  
 const persistedReducer = persistReducer(persistConfig, rootReducer);
  
 export default () => {
   const store = createStore(persistedReducer, {}, applyMiddleware(ReduxThunk));
-  const persistor = persistStore(store);
+  const persistor = persistStore(store, null, (data) => {
+    const state = store.getState();
+
+    if (state && state.shell && state.shell.manifest) {
+      store.dispatch({
+        type: APPLY_MANIFEST,
+        payload: state.shell.manifest
+      });
+    }
+  });
+  
   return { store, persistor };
 };

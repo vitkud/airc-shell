@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -8,128 +7,11 @@ import {
     selectView
 } from 'actions';
 
+import ShellHeaderViewsBar from './ShellHeaderViewsBar';
+import ShellHeaderApplicationsBar from './ShellHeaderApplicationsBar';
+
 class ShellHeader extends Component {
-    renderActivityBar() {
-        const { manifest, module } = this.props;
-
-        if (_.size(manifest) > 0) {
-            const res = [];
-
-            _.each(manifest, (mod, id) => {
-                res.push(
-                    <li 
-                        className={module === id ? 'active' : ''}
-                        key={mod.code}
-                    >
-                        <a 
-                            href={`/${mod.code}`}
-                            onClick={(event) => {
-                                event.preventDefault();
-                                this.selectModule(id);
-                                return false;
-                            }}
-                            title={mod.name}
-                        >
-                            <span>{mod.name}</span>
-                        </a>
-                    </li>
-                );
-            });
-
-            return (
-                <div className="ushell-header-activity-bar">
-                    <nav className="ushell-header-nav-activity-bar">
-                        <ul>
-                            {res}
-                        </ul>
-                    </nav>
-                </div>
-            );
-        }
-
-        return null;
-    }
-
-    selectModule(id) {
-        const { manifest } = this.props;
-
-        if (id && manifest && manifest[id]) {
-            const mod = manifest[id];
-
-            if (mod.path) {
-                this.props.changeFrame(mod.path);
-            }
-
-            this.props.selectModule(id);
-        } else {
-            this.props.selectModule(null);
-        }
-    }
-
-    selectView(code) {
-        const { manifest, module } = this.props;
-        console.log(code);
-        if ( manifest && module &&  manifest[module]) {
-            const mod = manifest[module];
-            if (mod.views) {
-                _.each(mod.views, (view) => {
-                    if (view.code === code) {
-                        this.props.selectView(code);
-
-                        if (view.path) {
-                            this.props.changeFrame(view.path);
-                        }
-
-                        return false;
-                    }
-                });
-            }
-        }
-    }
-
-    renderViewsBar() {
-        const { manifest, module, view } = this.props;
-        let views = null;
-        let mod = null;
-
-        if (manifest && module && manifest[module]) {
-            mod = manifest[module];
-            views = mod.views;
-        }
-
-        if (views && views.length > 0) {
-            return (
-                <div className="ushell-header-views-bar">
-                    <nav>
-                        <ul>
-                            {views.map(item => {
-                                return (
-                                    <li 
-                                        key={item.code}
-                                        className={item.code === view ? 'active' : ''}
-                                    >
-                                        <a 
-                                            href={`/${mod.code}/${item.code}`} 
-                                            onClick={(event) => {
-                                                event.preventDefault();
-                                                this.selectView(item.code);
-                                                return false;
-                                            }}
-                                        >
-                                            <span>{item.name}</span>
-                                        </a>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </nav>
-                </div>
-            );
-        }
-
-        return null;
-    }
-
+    
     render() {
         return (
             <div className="ushell-header">
@@ -156,12 +38,12 @@ class ShellHeader extends Component {
                             </a>
                         </div>
 
-                        {this.renderActivityBar()}
+                        <ShellHeaderApplicationsBar />
 
                         <div className="clear"></div>
                     </div>
 
-                    {this.renderViewsBar()}
+                    <ShellHeaderViewsBar />
                 </div>
             </div>
         );

@@ -1,26 +1,40 @@
 import {
-    ADD_SHELL_ERROR,
-    ADD_SHELL_WARNING,
-    ADD_SHELL_NOTIFICATION
+    ADD_SHELL_NOTIFY_MESSAGE
 } from './types';
 
-export const addShellError = (mess) => {
-    return {
-        type: ADD_SHELL_ERROR,
-        payload: mess
-    }
-};  
+import {
+    ERROR,
+    INFO,
+    WARNING,
+    SUCCESS
+} from 'const/Notifications';
 
-export const addShellWarning = (mess) => {
-    return {
-        type: ADD_SHELL_WARNING,
-        payload: mess
-    }
-};  
+export const addShellErrorNotify = (text = '', description = '', lifetime = 5, hideclose = false) => {
+    return addShellNotifyMessage(text, description, ERROR, lifetime, hideclose);
+};
 
-export const addShellNotofication = (mess) => {
+export const addShellInfoNotify = (text = '', description = '', lifetime = 5, hideclose = false) => {
+    return addShellNotifyMessage(text, description, INFO, lifetime, hideclose);
+};
+
+export const addShellWarningNotify = (text = '', description = '', lifetime = 5, hideclose = false) => {
+    return addShellNotifyMessage(text, description, WARNING, lifetime, hideclose);
+};
+
+export const addShellSuccessNotify = (text = '', description = '', lifetime = 5, hideclose = false) => {
+    return addShellNotifyMessage(text, description, SUCCESS, lifetime, hideclose);
+};
+
+export const addShellNotifyMessage = (text = '', description = '', type = INFO, lifetime = 5, hideClose = false ) => {
+
     return {
-        type: ADD_SHELL_NOTIFICATION,
-        payload: mess
+        type: ADD_SHELL_NOTIFY_MESSAGE,
+        payload: {
+            text,
+            description,
+            type,
+            lifetime,
+            hideClose
+        }
     }
 };  

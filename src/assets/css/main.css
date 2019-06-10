@@ -1,26 +1,31 @@
 :root {
     --header-nav-link-color: #000;
-    --header-nav-link-hover-color: #000;
-    --header-nav-link-active-color: #000;
+    --header-nav-link-hover-color: var(--color-brand);
+    --header-nav-link-active-color: var(--color-brand);
 }
 
 html {
-    background-color: #F5F8FA;
+    background-color: var(--color-bg);
     height: 100%;
     width: 100%;
 }
 
 body {
-    min-height: 100%;
+    height: 100%;
     width: 100%;
 }
 
-.--container {
+.--wrapper {
+    display: grid;
     min-height: 100%;
+    position: relative;
 }
 
-.--wrapper {
-    
+.--container {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
 }
 
 .--loading {
@@ -83,20 +88,128 @@ body {
     to { height: 100%; }
 }
 
+/* loading stub */
+
+.ushell-loading-stub {
+    background: #fff;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+}
+
+.ushell-loading-stub-loader {
+    width: 50px;
+    height: 50px;
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    margin: -25px 0px 0px -25px;
+
+
+
+    animation: show-loader 0.3s 1 ease-in-out;
+}
+
+@keyframes show-loader {
+    from {opacity: 0.7; transform: scale(0.2);}
+    80% {opacity: 1; transform: scale(1.2);}
+    to {transform: scale(1);}
+}
+
 /*******************/
 
+.ushell-notifications-container {
+    position: fixed;
+
+    z-index: 100000;
+
+    left: 0px;
+    top: 0px;
+
+    text-align: left;
+
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.ushell-notifications-container.left {
+    left: 0px;
+    right: initial;
+    text-align: left;
+}
+
+.ushell-notifications-container.right {
+    right: 0px;
+    left: initial;
+    text-align: right;
+}
+
+.ushell-notifications-container.top {
+    top: 0px;
+    bottom: initial;
+}
+
+.ushell-notifications-container.bottom {
+    bottom: 0px;
+    top: initial;
+}
+
+.left .ushell-notifications-item-enter {
+  left: -100%;
+}
+
+.left .ushell-notifications-item-enter.ushell-notifications-item-enter-active {
+  left: 0;
+  transition: left 300ms ease-in-out;
+}
+
+.left .ushell-notifications-item-leave {
+  left: 0;
+}
+
+.left .ushell-notifications-item-leave.ushell-notifications-item-leave-active {
+  left: -100%;
+  transition: left 300ms ease-in-out;
+}
+
+.right .ushell-notifications-item-enter {
+    right: -100%;
+}
+  
+.right .ushell-notifications-item-enter.ushell-notifications-item-enter-active {
+    right: 0;
+    transition: right 300ms ease-in-out;
+}
+  
+.right .ushell-notifications-item-leave {
+    right: 0;
+}
+  
+.right .ushell-notifications-item-leave.ushell-notifications-item-leave-active {
+    right: -100%;
+    transition: right 300ms ease-in-out;
+}
+
+/**********************************/
+
+
 .ushell-container {
-    padding-bottom: 100pt;
+    display: grid;
+    padding-bottom: 50px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
 }
 
 .ushell-container.login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-    height: 100%;
+    display: block;
+    align-self: center;
+    justify-self: center;
 }
 
 .ushell-login-container {
@@ -161,6 +274,7 @@ body {
 
 /**********/
 
+
 .ushell-header {
     background-color: #fff;
     box-shadow: var(--box-shadow-z-1);
@@ -206,7 +320,7 @@ body {
 .ushell-header-action-pane {
     float: right;
     text-align: right;
-    padding: 20px 0px;
+    padding: 14pt 0;
 }
 
 .ushell-header-action-pane-btn {
@@ -245,14 +359,13 @@ body {
 
 .ushell-header-nav-activity-bar {
     font-size: 12pt;
+    padding-right: 200px;
 }
 
 .ushell-header-nav-activity-bar ul {
     list-style: none;
     text-align: left;
     white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow-x: hidden;
 }
 
 .ushell-header-nav-activity-bar ul li {
@@ -260,10 +373,55 @@ body {
     position: relative;
 }
 
-.ushell-header-nav-activity-bar ul li a {
+.ushell-header-nav-activity-bar ul li a,
+.ushell-header-nav-activity-bar ul li .dots {
     padding: 26px 25px 26px;
     line-height: 20px;
     display: block;
+}
+
+.ushell-header-nav-activity-bar ul li .sub {
+    position: absolute;
+    right: 0px;
+    top: 45px;
+
+    background-color: #fff;
+    height: 0;
+    overflow: hidden;
+
+    transition: height 0.2s;
+}
+
+
+.ushell-header-nav-activity-bar ul li:hover .sub {
+    height: auto;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.ushell-header-nav-activity-bar ul li .sub ul {
+    display: block;
+}
+
+.ushell-header-nav-activity-bar ul li .sub ul li {
+    display: block;
+}
+
+.ushell-header-nav-activity-bar ul li .sub ul li.active:after {
+
+    content: ' ';
+    height: 100%;
+    width: 3pt;
+    border-radius: 0px 100px 100px 0px;
+    position: absolute;
+    background-color: var(--color-brand);
+    bottom: 0;
+    left: 0;
+
+}
+
+.ushell-header-nav-activity-bar ul li a:hover {
+    color: var(--header-nav-link-hover-color);
 }
 
 .ushell-header-nav-activity-bar ul li span {
@@ -283,6 +441,7 @@ body {
     left: 0px;
 }
 
+
 .ushell-header-views-bar {
     font-size: 11pt;
     border-top: 1px solid var(--color-light-400);
@@ -290,16 +449,17 @@ body {
 
 .ushell-header-views-bar ul {
     white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow-x: hidden;
 }
 
 .ushell-header-views-bar ul li {
     display: inline-block;
     position: relative;
+
+    position: relative;
 }
 
-.ushell-header-views-bar ul li a {
+.ushell-header-views-bar ul li a,
+.ushell-header-views-bar ul li .dots {
     display: block;
     padding: 15px;
     line-height: 1;
@@ -322,10 +482,73 @@ body {
     left: 0;
 }
 
+.ushell-header-views-bar ul li .sub {
+    position: absolute;
+    right: 0px;
+    top: 45px;
+
+    background-color: #fff;
+    height: 0;
+    overflow: hidden;
+
+    transition: height 0.2s;
+}
+
+
+.ushell-header-views-bar ul li:hover .sub {
+    height: auto;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ushell-header-views-bar ul li .sub ul {
+    display: block;
+}
+
+.ushell-header-views-bar ul li .sub ul li {
+    display: block;
+}
+
+.ushell-header-views-bar ul li .sub ul li.active:after {
+
+    content: ' ';
+    height: 100%;
+    width: 3pt;
+    border-radius: 0px 100px 100px 0px;
+    position: absolute;
+    background-color: var(--color-brand);
+    bottom: 0;
+    left: 0;
+
+}
+
 /* working area */
 
 .ushell-working-area {
-    padding-bottom: 20px;
+    position: relative;
+}
+
+.ushell-working-area-iframe {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+
+    left: 0px;
+    top: 0px;
+}
+
+.ushell-working-area-loading {
+    position: absolute;
+
+    left: 0px;
+    top: 0px;
+
+    width: 100%;
+    height: 100%;
+
+    background: #fff url(../img/loader.gif) center center no-repeat;
+
+    opacity: 0.7;
 }
 
 /* footer */
@@ -346,20 +569,100 @@ body {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 30pt 0pt;
+    padding: 10pt 0pt;
 }
 
 .ushell-footer-left {
-    width: 33.33%;
+    width: 100%;
     text-align: left;
 }
 
 .ushell-footer-center {
-    width: 33.33%;
+    width: 100%;
     text-align: center;
 }
 
 .ushell-footer-right {
-    width: 33.33%;
+    width: 100%;
     text-align: right;
+}
+
+/* modal */
+
+.ushell-modal-portal {
+    
+}
+
+.ushell-modal-overlay {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(0,0,0,0.6);
+
+    display: grid;
+
+    align-items: center;
+    justify-items: center;
+
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.ushell-modal-overlay--after-open {
+    opacity: 1;
+}
+
+.ushell-modal-content {
+    padding: 30pt 50pt;
+    background-color: #fff;
+    border-radius: var(--border-radius-medium);
+    display: inline-block;
+
+    opacity: 0;
+    transform: scale(1.1);
+
+    transition: all .5s;
+}
+
+.ushell-modal-content--after-open {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.ushell-modal-content.large-modal {
+    width: 80%;
+    max-width: 1200px; 
+}
+
+.ushell-modal-header {
+    text-align: center;
+    font-size: 16pt;
+    margin-bottom: 15pt;
+}
+
+.ushell-modal-subheader {
+    text-align: center;
+    font-size: 14pt;
+    margin-top: 8pt;
+}
+
+.ushell-modal-text {
+    font-size: 12pt;
+    line-height: 1.4;
+}
+
+.ushell-modal-descrpition {
+    text-align: center;
+    margin-bottom: 30pt;
+}
+
+/****************/
+
+.ushell-auth-form-row {
+    margin: 0 30pt;
 }

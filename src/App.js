@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import configureStore from 'configureStore';
+import { 
+  Root,
+  ApiProvider 
+} from 'components';
 
-import MainContainer from './components/MainContainer';
+import configureStore from 'configureStore';
 
 class App extends Component {
   render() {
@@ -13,7 +16,9 @@ class App extends Component {
     return (
       <Provider store={cfg.store}>
         <PersistGate loading={null} persistor={cfg.persistor}>
-          <MainContainer />
+          <ApiProvider>
+            <Root />
+          </ApiProvider>
         </PersistGate>
       </Provider>
     );

@@ -1,4 +1,4 @@
 {
-    "API_HOST": "http://localhost:8000",
-    "CHECK_INTERVAL": 10000
+    "API_HOST": "http://localhost:8000/api",
+    "CHECK_INTERVAL": 2000
 }

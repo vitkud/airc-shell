@@ -8,12 +8,8 @@ class Footer extends Component {
                     <div className="ushell-footer-left">
                         &copy; <span id="dateyear"></span> Untill. All rights reserved.
                     </div>
-                    <div className="ushell-footer-center">
-                        unTill Web Managment
-                    </div>
                     <div className="ushell-footer-right">
-                        UI version: <span id="ui_version"></span><br />
-                        Installer version: <span id="inst_version"></span><br />
+                        unTill Web Managment
                     </div>
                 </div>
             </div>

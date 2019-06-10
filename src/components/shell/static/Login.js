@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { LoginForm } from 'components/shell/forms'
 
-class LoginScreen extends Component {
+class Login extends Component {
     render() {
         return (
             <div className="ushell-container login">
@@ -36,4 +36,4 @@ class LoginScreen extends Component {
     }
 }
 
-export default LoginScreen;
+export default Login;

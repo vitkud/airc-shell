@@ -19,10 +19,14 @@ import {
 
 import cfg from 'config.json';
 
-class ShellScreen extends Component {
+class Shell extends Component {
     constructor() {
         super();
         this.timer = null;
+    }
+
+    componentWillReceiveProps(nextProps) {
+
     }
 
     componentWillMount() {
@@ -32,10 +36,8 @@ class ShellScreen extends Component {
         if (this.timer) clearInterval(this.timer);
         
         this.timer = setInterval(() => {
-            console.log('checking auth token');
-            this.props.checkAuthToken();
+            this.props.checkAuthToken(false);
         }, cfg.CHECK_INTERVAL);
-        
     }
 
     componentWillUnmount() {
@@ -60,9 +62,17 @@ class ShellScreen extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { manifest, token } = state.shell;
+    const { manifest, token, application, view } = state.shell;
+    const { APPS, VIEWS } = state.cp; 
 
-    return { manifest, token };
+    return {
+        APPS,
+        VIEWS, 
+        application,
+        view,
+        manifest, 
+        token 
+    };
 };
 
-export default connect(mapStateToProps, { loadManifest, checkAuthToken })(ShellScreen);
+export default connect(mapStateToProps, { loadManifest, checkAuthToken })(Shell);

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { NotificationItem } from 'components/shell/common/';
+
+import cn from 'classnames';
 
 class NotificationsContainer extends Component {
     constructor() {
@@ -12,8 +15,8 @@ class NotificationsContainer extends Component {
         };
     }
 
-    componentWillReceiveProps(oldProps, newProps) {
-        if (newProps.last && (oldProps.last !== newProps.last)) {
+    componentWillReceiveProps(newProps) {
+        if (newProps.last && (this.props.last !== newProps.last)) {
             const { last, notifications } = newProps;
 
             const mess = notifications[last];
@@ -49,17 +52,33 @@ class NotificationsContainer extends Component {
             const list = Object.values(messages);
 
             return list.map((item) => {
-                return <NotificationItem data={item} onRemove={(item) => this.removeMessage(item.id)} />
+                return <NotificationItem 
+                    key={`notification_item_${item.id}`}
+                    {...item} 
+                    onRemove={(id) => this.removeMessage(id)}                     
+                />
             });
         }
 
         return null;
     }
 
+    getClass() {
+        const { right, bottom } = this.props;
+
+        return `${right ? 'right' : 'left'} ${bottom ? 'bottom' : 'top'}`;
+    }
+
     render() {
         return (
-            <div className="ushell-notifications-container">
-                {this.renderMessages()}
+            <div className={cn("ushell-notifications-container", this.getClass())}>
+                <ReactCSSTransitionGroup
+                    transitionName="ushell-notifications-item"
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={300}
+                >
+                    {this.renderMessages()}
+                </ReactCSSTransitionGroup>
             </div>
         );
     }
