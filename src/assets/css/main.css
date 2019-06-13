@@ -13,6 +13,8 @@ html {
 body {
     height: 100%;
     width: 100%;
+
+    background: none !important;
 }
 
 .--wrapper {
@@ -219,6 +221,7 @@ body {
 
 .ushell-login-block {
     padding: 24pt;
+    box-shadow: var(--box-shadow-z-2);
 }
 
 .ushell-login-block-logo {
@@ -243,6 +246,12 @@ body {
     margin-bottom: 50px;
 }
 
+.ushell-login-block-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 10pt;
+}
+ 
 .ushell-login-bottom-navigation {
     margin-top: 30pt;
     font-size: 10pt;
@@ -270,6 +279,19 @@ body {
     justify-content: center;
 }
 
+
+
+/**********/
+
+.ushell-login-block-form {
+    
+}
+
+.ushell-login-block-form-title {
+    text-align: center;
+    font-size: 15pt;
+    margin-bottom: 20px;
+}
 
 
 /**********/
@@ -328,6 +350,7 @@ body {
     vertical-align: middle;
     height: 34px;
     width: 34px;
+    line-height: 34px;
     margin-left: 15px;
     background-color: var(--color-light-600);
 
@@ -341,10 +364,15 @@ body {
 
 .ushell-header-action-pane-btn.with-icon i,
 .ushell-header-action-pane-btn.with-icon img {
-    height: 90%;
+    max-height: 90%;
     margin: 5% 0;
 
-    display: block;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ushell-header-action-pane-btn.with-icon i {
+    font-size: 15pt;
 }
 
 .ushell-header-action-pane-btn.user {

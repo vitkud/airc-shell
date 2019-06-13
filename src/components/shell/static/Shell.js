@@ -17,7 +17,8 @@ import {
 
 //config
 
-import cfg from 'config.json';
+import cfg from 'config.js';
+
 
 class Shell extends Component {
     constructor() {

@@ -1,4 +1,5 @@
 import API from 'classes/UshellApi.js';
+import HTTP from 'const/HTTPCodes.js';
 
 import {
     SET_AUTH_TOKEN,
@@ -52,22 +53,36 @@ export const checkAuthToken = (force = false) => {
     };
 };
 
-export const doAuth = (login, password) => {
+export const doAuth = (login, password, register = false) => {
     return (dispatch) => {
-        API.authorize(login, password)
-            .then((res) => {
-                dispatch(addShellSuccessNotify('Authorization complete'));
+        let action = null;
 
-                const expDate = new Date().valueOf() + res.lifetime;
+        if (register) {
+            action = API.authorize(login, password, true);
+        } else {
+            action = API.authorize(login, password);
+        }
 
-                dispatch({
-                    type: SET_AUTH_TOKEN,
-                    payload: {
-                        token: res.auth_token,
-                        tokenValid: true,
-                        tokenExpired: expDate
-                    }
-                });
+        action.then((res) => {
+                
+                
+                if (res.StatusCode === HTTP.OK) {
+                    dispatch(addShellSuccessNotify('Authorization complete'));
+                    
+                    //const expDate = new Date().valueOf() + res.lifetime;
+                    const expDate = res.Data.exp * 1000;
+
+                    dispatch({ 
+                        type: SET_AUTH_TOKEN,
+                        payload: {
+                            token: res.Data.token, 
+                            tokenValid: true,
+                            tokenExpired: expDate
+                        }
+                    });
+                } else {
+                    dispatch(addShellErrorNotify(res.Data));
+                }
             })
             .catch((e) => {
                 let text = '';

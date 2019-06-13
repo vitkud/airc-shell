@@ -1,4 +1,5 @@
 import API from 'classes/UshellApi.js';
+import HTTP from 'const/HTTPCodes.js';
 
 import {
     INIT_APP,
@@ -44,10 +45,15 @@ export const loadManifest = () => {
         if (token && tokenValid) {
             API.loadManifest(token)
                 .then((res) => {
-                    dispatch({
-                        type: APPLY_MANIFEST,
-                        payload: res
-                    });
+                    if (res.StatusCode === HTTP.OK) {
+                        dispatch({
+                            type: APPLY_MANIFEST,
+                            payload: res.Data
+                        });
+                    } else {
+                        dispatch(addShellErrorNotify(res.Data));
+                    }
+                    
                 })
                 .catch((e) => {
                     dispatch(addShellErrorNotify(e.message));
@@ -64,6 +70,8 @@ export const selectModule = (code) => {
 
         const { APPS } = cp;
         const { application } = shell;
+
+        if (application === code) return;
 
         if (APPS && APPS[code] && application !== code) {
             const CPMod = APPS[code];

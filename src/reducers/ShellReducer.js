@@ -3,8 +3,8 @@
 import * as Types from 'actions/types';
 
 const INITIAL_STATE = {
-    token: '123',
-    tokenValid: true, 
+    token: null,
+    tokenValid: false, 
     tokenExpired: null,
     application: null,
     view: null,

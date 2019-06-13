@@ -1,15 +1,16 @@
-import CFG from 'config.json';
+import CFG from 'config.js';
 import Axios from 'axios';
+import qs from 'qs';
 
 class UApi {
 	static async loadManifest(token) {
 		return new Promise((resolve) => {
-            const data = { auth_token: token };
-
             fetch(`${CFG.API_HOST}/modules/manifest`, {
-                method: 'POST',
-                headers: {'Content-Type':'application/json'},
-                body: JSON.stringify(data)
+                method: 'GET',
+                headers: {
+                    'Content-Type':'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
             })
             .then((response) => response.json())
             .then((response) => {
@@ -27,12 +28,39 @@ class UApi {
 				reject(false);
 			}
 
-			const data = { auth_token: token };
-    
             fetch(`${CFG.API_HOST}/registry/check`, {
                 method: 'post',
                 headers: {
-                    "Content-type": "application/json"
+                    "Content-type": "application/json",
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.error) {
+                    reject(res);
+                } else {
+                    resolve(res);
+                }
+            });
+		});
+    }
+    
+    static async authorize(login, password, isRegister) {
+        return new Promise((resolve, reject) => {
+			const data = { 
+                login,
+                password
+            };
+
+            let path = `${CFG.API_HOST}/user/login`;
+
+            if (isRegister) path = `${CFG.API_HOST}/user/new`;
+
+            fetch(path, {
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json'
                 },
                 body: JSON.stringify(data)
             })
@@ -46,37 +74,9 @@ class UApi {
             });
 		});
     }
-    
-    static async authorize(login, password) {
-        return new Promise((resolve, reject) => {
-			const data = { 
-                usr: login,
-                pwd: password
-            };
 
-            console.log(data);
-
-            fetch(`${CFG.API_HOST}/registry/auth`, {
-                method: 'POST',
-                headers: {'Content-Type':'application/json'},
-                body: JSON.stringify(data)
-            })
-            .then((res) => res.json())
-            .then((res) => {
-                if (res.error) {
-                    reject(res);
-                } else {
-                    resolve(res);
-                }
-            });
-		});
-    }
-
-    static async invoke(queueId, path, token, params, method = 'GET') {
-        console.log('invoke params', params);
-        let data = {
-            //auth_token: token  
-        };
+    static async invoke(queueId, path, token, params, method = 'GET', location = 1) {
+        let data = {};
 
         if (params) {
             if (typeof params === 'string') {
@@ -101,7 +101,12 @@ class UApi {
 
             console.log('invoke method is', m);
 
-            if (m === 'get') config.params = data;
+            if (m === 'get') {
+                config.params = data;
+                config.paramsSerializer = params => {
+                    return qs.stringify(params, {arrayFormat: 'repeat'})
+                }
+            }
 
             if (Axios[m]) {
                 let ax = null;
@@ -109,7 +114,7 @@ class UApi {
                     case 'get': ax = Axios.get(`${CFG.API_HOST}/${queueId}/${path}`, config); break;
                     case 'patch':
                     case 'put':
-                    case 'post': ax = Axios[m](`${CFG.API_HOST}/${queueId}/${path}`, data, config); break;
+                    case 'post': ax = Axios[m](`${CFG.API_HOST}/${queueId}/${location}/${path}`, data, config); break;
                     default: break;
                 }
 
@@ -117,22 +122,6 @@ class UApi {
             }
             
             throw new Error(`method "${m}" not alowed at Axios`);
-            
-            /*
-            fetch(`${CFG.API_HOST}/${queueId}/${path}`, {
-                method: method,
-                headers: {'Content-Type':'application/json'},
-                body: JSON.stringify(data)
-            })
-            .then((res) => res.json())
-            .then((res) => {
-                if (res.error) {
-                    reject(res);
-                } else {
-                    resolve(res);
-                }
-            });
-            */
 		});
     }
 }

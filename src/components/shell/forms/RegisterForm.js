@@ -6,22 +6,20 @@ import LoginSchema from 'schemas/LoginSchema';
 import {
     Form,
     FormRow,
-    Label,
     TextInput,
-    Link,
+    Label,
     FormButton
 } from 'base/components';
 
 import {
-    doAuth,
-    showForgotModal
+    doAuth
 } from 'actions';
 
-class LoginForm extends Component {
+class RegisterForm extends Component {
     submitForm(values) {
         const { login, password } = values;
 
-        this.props.doAuth(login, password);
+        this.props.doAuth(login, password, true);
     }
 
     forgotPassword() {
@@ -31,6 +29,9 @@ class LoginForm extends Component {
     render() {
         return (
             <div className="ushell-login-block-form">
+                <div className="ushell-login-block-form-title">
+                    New user registration
+                </div>
                 <Formik
                     initialValues={{ 
                         login: '', 
@@ -60,40 +61,40 @@ class LoginForm extends Component {
                             return (<form onSubmit={handleSubmit}>
                                 <Form>
                                     <FormRow>
-                                        <Label
+                                        <Label 
                                             error={errors.login && touched.login && errors.login}
                                             text="Username"
                                         />
+
                                         <TextInput 
                                             error={errors.login && touched.login && errors.login}
-                                            placeholder="Username"
-                                            name="login"
-                                            onChange={handleChange}
                                             value={values.login}
                                             type="text"
+                                            
+                                            name="login"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+        
+                                            placeholder="Username"
                                         />
                                     </FormRow>
         
                                     <FormRow>
                                         <Label 
-                                            error={errors.password && touched.password && errors.password}
-                                            text="Password"
-                                            right={
-                                                <Link 
-                                                    href="#forgot"
-                                                    text="Forgot password?"
-                                                    onClick={this.forgotPassword.bind(this)}
-                                                    className="forgot_link"
-                                                />
-                                            }
+                                            error={errors.login && touched.login && errors.login}
+                                            text="Username"
                                         />
+
                                         <TextInput 
-                                            placeholder="Password"
+                                            error={errors.password && touched.password && errors.password}
                                             value={values.password}
+                                            type="password"
+
                                             name="password"
                                             onChange={handleChange}
-                                            label="Password"
-                                            type="password"
+                                            onBlur={handleBlur}
+                                            placeholder="Password"
+
                                         />
                                     </FormRow>
         
@@ -105,7 +106,6 @@ class LoginForm extends Component {
                                             
                                             input={{
                                                 onClick: handleSubmit,
-                                                tabIndex: 3,
                                                 title: "Sign in",
                                                 disabled: isSubmitting
                                             }}
@@ -126,6 +126,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-    doAuth, 
-    showForgotModal 
-})(LoginForm);
+    doAuth
+})(RegisterForm);

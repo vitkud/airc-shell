@@ -6,9 +6,10 @@ import LoginSchema from 'schemas/LoginSchema';
 import {
     Form,
     FormRow,
-    FormInput,
+    TextInput,
     Link,
-    Button
+    Button,
+    Label
 } from 'base/components';
 
 import {
@@ -68,31 +69,29 @@ class AuthForm extends Component {
                                             <div className="grid row-1 col-2 gap-24">
                                                 <div className="cell">
                                                     <FormRow>
-                                                        <FormInput 
+                                                        <Label
+                                                            error={errors.login && touched.login && errors.login}
+                                                            text="Username"
+                                                        />
+
+                                                        <TextInput 
                                                             error={errors.login && touched.login && errors.login}
                                                             value={values.login}
                                                             type="text"
-                                                            label="Username"
-                                                            input={{
-                                                                name:"login",
-                                                                onChange:handleChange,
-                                                                onBlur:handleBlur,
-                    
-                                                                placeholder: "Username",
-                                                                tabIndex: 1
-                                                            }}
+                                                            placeholder="Username"
+                                                            name="login"
+                                                            onChange={handleChange}
+                                                            onBlur={handleBlur}
+
                                                         />
                                                     </FormRow>
                                                 </div>
                                                 <div className="cell">
                                                     <FormRow>
-                                                        <FormInput 
-                                                            error={errors.password && touched.password && errors.password}
-                                                            value={values.password}
-                                                            label="Username"
-                                                            type="password"
-                                                            showToggler
-                                                            tip={
+                                                        <Label
+                                                            error={errors.login && touched.login && errors.login}
+                                                            text="Password"
+                                                            right={
                                                                 <Link 
                                                                     href="#forgot"
                                                                     text="Forgot password?"
@@ -100,14 +99,16 @@ class AuthForm extends Component {
                                                                     className="forgot_link"
                                                                 />
                                                             }
-                    
-                                                            input={{
-                                                                name: "password",
-                                                                onChange: handleChange,
-                                                                onBlur: handleBlur,
-                                                                placeholder: "Password",
-                                                                tabIndex: 2
-                                                            }}
+                                                        />
+                                                        <TextInput 
+                                                            error={errors.password && touched.password && errors.password}
+                                                            value={values.password}
+                                                            label="Username"
+                                                            type="password"
+                                                            name="password"
+                                                            onChange={handleChange}
+                                                            onBlur={handleBlur}
+                                                            placeholder="Password"
                                                         />
                                                     </FormRow>
                                                 </div>
@@ -117,19 +118,15 @@ class AuthForm extends Component {
                                         <div className="grid row-1 col-1">
                                             <div className="cell align-right">
                                                 <Button 
-                                                    bordered
                                                     text="Close"
                                                     onClick={this.closeForm.bind(this)}
-                                                    tabIndex={4}
                                                     title="Close"
                                                 />
 
                                                 <Button 
-                                                    className="ml-small"
                                                     primary
                                                     text="Sign in"
                                                     onClick={handleSubmit}
-                                                    tabIndex={3}
                                                     title="Sign in"
                                                     disabled={isSubmitting}
                                                 />

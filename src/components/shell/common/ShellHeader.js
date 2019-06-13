@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
-    doLogout,
     selectModule,
     selectView
 } from 'actions';
 
 import ShellHeaderViewsBar from './ShellHeaderViewsBar';
 import ShellHeaderApplicationsBar from './ShellHeaderApplicationsBar';
+
+import ShellHeaderTaskButton from './ShellHeaderTaskButton';
+import ShellHeaderNotifyButton from './ShellHeaderNotifyButton';
+import ShellHeaderUserButton from './ShellHeaderUserButton';
 
 class ShellHeader extends Component {
     
@@ -23,19 +26,9 @@ class ShellHeader extends Component {
                     </div>
                     <div className="ushell-header-nav">
                         <div className="ushell-header-action-pane">
-                            <a href="/#" target="_self" className="ushell-header-action-pane-btn with-icon">
-                                <i className="icon-to-do" />
-                                <span className="badge bottom right danger">2</span>
-                            </a>
-
-                            <a href="/#" target="_self" className="ushell-header-action-pane-btn with-icon">
-                                <i className="icon-notification" />
-                                <span className="badge bottom right success">10</span>
-                            </a>
-
-                            <a href="/#" target="_self" className="ushell-header-action-pane-btn user" onClick={() => this.props.doLogout()}>
-                                <img src={require('assets/img/user_stub.png')} alt="That's you!"/>
-                            </a>
+                            <ShellHeaderTaskButton />
+                            <ShellHeaderNotifyButton />
+                            <ShellHeaderUserButton />
                         </div>
 
                         <ShellHeaderApplicationsBar />
@@ -57,7 +50,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    doLogout,
     selectModule,
     selectView
 })(ShellHeader);

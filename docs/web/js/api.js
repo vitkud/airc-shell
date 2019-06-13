@@ -43,7 +43,7 @@ class UApi {
 				reject(false);
 			}
 
-			data = { auth_token: token };
+			data = {  token };
 	
 			$.ajax({
 				type: "POST",

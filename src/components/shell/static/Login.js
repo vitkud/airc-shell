@@ -1,9 +1,37 @@
 import React, { Component } from 'react';
 
-import { LoginForm } from 'components/shell/forms'
+import { LoginForm, RegisterForm } from 'components/shell/forms'
 
 class Login extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            register: false
+        };
+    }
+
+    handleLinkClick() {
+        const { register } = this.state;
+
+        this.setState({ register: !register });
+    }
+
+    renderLink() {
+        const { register } = this.state;
+
+        return (
+            <div className="ushell-login-block-link">
+                <a href="/#" onClick={this.handleLinkClick.bind(this)}>
+                    {register ? 'Login' : 'Registration'}
+                </a>
+            </div>
+        );
+    }
+
     render() {
+        const { register } = this.state;
+
         return (
             <div className="ushell-container login">
                     <div className="ushell-login-container">
@@ -20,7 +48,9 @@ class Login extends Component {
                                 <img src={require('base/images/illustrations/log-in.svg')} alt="Illustration"/>
                             </div> 
 
-                            <LoginForm />
+                            { register ? <RegisterForm /> : <LoginForm />}
+
+                            {this.renderLink()}
                         </div>
                         <div className="ushell-login-bottom-navigation">
                             <ul>
