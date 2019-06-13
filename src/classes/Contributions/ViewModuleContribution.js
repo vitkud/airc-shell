@@ -1,3 +1,5 @@
+import log from 'Log';
+
 class ViewModuleContribution {
     constructor( props ) {
         const { name, data, code, path, app, methods } = props;
@@ -19,10 +21,10 @@ class ViewModuleContribution {
     }
 
     invoke() {
-        console.log(`Try load in ViewModuleContribution ${this.name}`);
-        console.log(global.API);
+        log(`Try load in ViewModuleContribution ${this.name}`);
+        log(global.API);
         if (global.API && global.API.dispatch) {
-            console.log('dispathcing');
+            log('dispathcing');
             global.API.dispatch({
                 type: 'view_change',
                 payload: this.code

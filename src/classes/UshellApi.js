@@ -99,8 +99,6 @@ class UApi {
                 }
             };
 
-            console.log('invoke method is', m);
-
             if (m === 'get') {
                 config.params = data;
                 config.paramsSerializer = params => {

@@ -10,7 +10,6 @@ import {
 } from 'const/Notifications';
 
 export const addShellErrorNotify = (text = '', description = '', lifetime = 5, hideclose = false) => {
-    console.log(text, description);
     return addShellNotifyMessage(String(text), String(description), ERROR, lifetime, hideclose);
 };
 

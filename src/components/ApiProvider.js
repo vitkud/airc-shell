@@ -15,6 +15,7 @@ import {
     onModuleLoad
 } from 'actions';
 
+import log from 'Log';
 import UshellApi from 'classes/UshellApi';
 
 global.API = null; // TODO: should think abou it. Temp solution!!!
@@ -33,8 +34,8 @@ class ApiProvider extends Component {
         
         iframeApi(API)
             .then((api) => {
-                console.log('---- received API in shell ApiProvider');
-                console.log(api);
+                log('---- received API in shell ApiProvider');
+                log(api);
                 global.API = api;
             });
     }
@@ -50,7 +51,7 @@ class ApiProvider extends Component {
     }
 
     render() {
-        console.log('ApiProvider rendered');
+        log('ApiProvider rendered');
 
         return(
             <Fragment>

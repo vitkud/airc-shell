@@ -25,7 +25,7 @@ class ShellWorkingarea extends Component {
 
     render () {
         const { path, loaded } = this.props;
-        console.log('ShellWorkingarea rendered');
+
         return (
             <div className="ushell-working-area">
                 <iframe 

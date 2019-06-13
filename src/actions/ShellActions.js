@@ -122,8 +122,6 @@ export const iframeLoadingFinished = () => {
 };
 
 export const onModuleLoad = () => {
-    console.log('модуль только что загрузился');
-    
     return (dispatch, getState) => {
         const state = getState();
         const { view, application } = state.shell;
