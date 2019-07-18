@@ -75,7 +75,7 @@ class UApi {
 		});
     }
 
-    static async invoke(queueId, path, token, params, method = 'GET', location = 1) {
+    static async invoke(queueId, path, token, params, method = 'POST', location = 1) {
         let data = {};
 
         if (params) {
@@ -91,7 +91,7 @@ class UApi {
         }
 
         return new Promise((resolve, reject) => {
-            const m = method ? method.toLowerCase() : 'get';
+            const m = method ? method.toLowerCase() : 'post';
 
             const config = {
                 headers: {
@@ -112,7 +112,7 @@ class UApi {
                     case 'get': ax = Axios.get(`${CFG.API_HOST}/${queueId}/${path}`, config); break;
                     case 'patch':
                     case 'put':
-                    case 'post': ax = Axios[m](`${CFG.API_HOST}/${queueId}/${location}/${path}`, data, config); break;
+                    case 'post': ax = Axios[m](`${CFG.API_HOST}/${queueId}/${path}`, data, config); break;
                     default: break;
                 }
 

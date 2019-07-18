@@ -9,15 +9,12 @@
     "color-shorthand-hex-to-six-digit": "^2.10.24",
     "formik": "^1.5.1",
     "iframe-api": "^0.10.0",
-    "iframe-resizer": "^4.0.4",
-    "is-prod": "^1.0.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.14",
     "qs": "^6.7.0",
     "react": "^16.8.4",
     "react-addons-css-transition-group": "^15.6.2",
     "react-color": "^2.17.3",
     "react-dom": "^16.8.4",
-    "react-iframe-resizer-super": "^0.2.2",
     "react-modal": "^3.8.1",
     "react-redux": "^6.0.1",
     "react-router": "^5.0.0",
@@ -50,6 +47,7 @@
     "gulp-autoprefixer": "^6.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-react": "^4.0.0",
-    "gulp-sourcemaps": "^2.6.5"
+    "gulp-sourcemaps": "^2.6.5",
+    "is-prod": "^1.0.1"
   }
 }
