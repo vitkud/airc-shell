@@ -27,9 +27,18 @@ export default (state = INITIAL_STATE, action) => {
 
                 arr = path.split('/');
 
+                if (state.manifest) {
+                    const v1 = Object.values(state.manifest);
+
+                    if (v1.length > 0) {
+                        app = v1[0].code;
+                    }
+                }
+
                 if (arr[0]) app = arr[0];
                 if (arr[1]) view = arr[1];
 
+                
                 return {
                     ...state,
                     application: app || state.application,

@@ -394,6 +394,7 @@ body {
     list-style: none;
     text-align: left;
     white-space: nowrap;
+    margin-bottom: 0;
 }
 
 .ushell-header-nav-activity-bar ul li {
@@ -477,6 +478,7 @@ body {
 
 .ushell-header-views-bar ul {
     white-space: nowrap;
+    margin-bottom: 0;
 }
 
 .ushell-header-views-bar ul li {

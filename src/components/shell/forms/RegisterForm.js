@@ -102,11 +102,11 @@ class RegisterForm extends Component {
                                         <FormButton 
                                             submit
                                             full
-                                            text="Sign in"
+                                            text="Register"
                                             
                                             input={{
                                                 onClick: handleSubmit,
-                                                title: "Sign in",
+                                                title: "Register",
                                                 disabled: isSubmitting
                                             }}
                                         />

@@ -29,7 +29,7 @@ class ForgotPassword extends Component {
                 </div>
 
                 <div className="">
-                    <img src={require('base/images/illustrations/expired-session.svg')} alt="forgot password"/>
+                    <img src={require('base/images/Illustrations/expired-session.svg')} alt="forgot password"/>
                 </div>
 
                 <div className="">

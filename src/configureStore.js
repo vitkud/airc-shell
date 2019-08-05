@@ -14,7 +14,7 @@ import {
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: [ 'cp', 'ui' ] 
+  blacklist: [ 'cp', 'ui', 'shell' ] 
 };
  
 const persistedReducer = persistReducer(persistConfig, rootReducer);

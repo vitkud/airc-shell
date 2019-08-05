@@ -20,10 +20,12 @@ class Login extends Component {
     renderLink() {
         const { register } = this.state;
 
+        if (register) return null;
+
         return (
             <div className="ushell-login-block-link">
                 <a href="/#" onClick={this.handleLinkClick.bind(this)}>
-                    {register ? 'Login' : 'Registration'}
+                    Register
                 </a>
             </div>
         );
@@ -45,7 +47,7 @@ class Login extends Component {
                             </div>
 
                             <div className="ushell-login-block-illustration">
-                                <img src={require('base/images/illustrations/log-in.svg')} alt="Illustration"/>
+                                <img src={require('base/images/Illustrations/log-in.svg')} alt="Illustration"/>
                             </div> 
 
                             { register ? <RegisterForm /> : <LoginForm />}

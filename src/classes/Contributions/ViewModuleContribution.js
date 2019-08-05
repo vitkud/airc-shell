@@ -23,14 +23,13 @@ class ViewModuleContribution {
     invoke() {
         log(`Try load in ViewModuleContribution ${this.name}`);
         log(global.API);
+
         if (global.API && global.API.dispatch) {
             log('dispathcing');
             global.API.dispatch({
                 type: 'view_change',
                 payload: this.code
             });
-        } else {
-            throw new Error('global.API not initialized');
         }
     }
 

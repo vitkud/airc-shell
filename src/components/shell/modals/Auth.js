@@ -27,7 +27,7 @@ class Auth extends Component {
                     </div>
 
                     <div className="ushell-modal-descrpition">
-                        <img src={require('base/images/illustrations/expired-session.svg')} alt="session has expired"/>
+                        <img src={require('base/images/Illustrations/expired-session.svg')} alt="session has expired"/>
                     </div>
 
                     <div className="ushell-modal-text">
