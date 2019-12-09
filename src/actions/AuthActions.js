@@ -64,18 +64,16 @@ export const doAuth = (login, password, register = false) => {
         }
 
         action.then((res) => {
-                
-                
-                if (res.StatusCode === HTTP.OK) {
+                if (res.token && res.exp) {
                     dispatch(addShellSuccessNotify('Authorization complete'));
                     
                     //const expDate = new Date().valueOf() + res.lifetime;
-                    const expDate = res.Data.exp * 1000;
+                    const expDate = res.exp * 1000;
 
                     dispatch({ 
                         type: SET_AUTH_TOKEN,
                         payload: {
-                            token: res.Data.token, 
+                            token: res.token, 
                             tokenValid: true,
                             tokenExpired: expDate
                         }

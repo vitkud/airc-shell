@@ -12,7 +12,13 @@ class UApi {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            .then((response) => response.json())
+            .then((response) => {
+                if (response.status == 200) {
+                    return response.json();
+                }
+
+                return null;
+            })
             .then((response) => {
                 resolve(response);
             })

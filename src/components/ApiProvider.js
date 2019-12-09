@@ -29,7 +29,7 @@ class ApiProvider extends Component {
             sendSuccess: (text, descr, lifetime, hideClose) => this.sendNotify(text, descr, SUCCESS, lifetime, hideClose),
             sendInfo: (text, descr, lifetime, hideClose) => this.sendNotify(text, descr, INFO, lifetime, hideClose),
             onModuleLoad: () => this.props.onModuleLoad(),
-            changePath: (path) => this.props.changePath(path)
+            //changePath: (path) => this.props.changePath(path)
         };
         
         iframeApi(API)

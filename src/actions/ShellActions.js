@@ -45,13 +45,13 @@ export const loadManifest = () => {
         if (token && tokenValid) {
             API.loadManifest(token)
                 .then((res) => {
-                    if (res.StatusCode === HTTP.OK) {
+                    if (res !== null) {
                         dispatch({
                             type: APPLY_MANIFEST,
-                            payload: res.Data
+                            payload: res
                         });
                     } else {
-                        dispatch(addShellErrorNotify(res.Data));
+                        dispatch(addShellErrorNotify('Manifest not specified or wrong given'));
                     }
                     
                 })

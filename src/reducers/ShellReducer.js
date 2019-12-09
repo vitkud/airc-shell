@@ -16,10 +16,11 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-    let path, app, view, arr;
+    let path, app, view, arr, apps;
 
     switch (action.type) {
         case Types.INIT_APP: 
+            console.log('Shell initiation.');
             if (window && window.location && window.location.pathname) {
                 path = window.location.pathname;
 
@@ -27,17 +28,11 @@ export default (state = INITIAL_STATE, action) => {
 
                 arr = path.split('/');
 
-                if (state.manifest) {
-                    const v1 = Object.values(state.manifest);
-
-                    if (v1.length > 0) {
-                        app = v1[0].code;
-                    }
-                }
-
                 if (arr[0]) app = arr[0];
                 if (arr[1]) view = arr[1];
 
+                console.log(`Selected app: ${app}`);
+                console.log(`Selected view: ${view}`);
                 
                 return {
                     ...state,
@@ -79,11 +74,27 @@ export default (state = INITIAL_STATE, action) => {
             };
 
         case Types.APPLY_MANIFEST: 
-            return {
-                ...state,
-                manifest: action.payload
-            };
+            if (action.payload) {
+                apps = Object.values(action.payload);
 
+                if (!state.application && apps.length > 0) {
+                    app = apps[0];
+
+                    if (app.views && app.views.length > 0) {
+                        view = app.views[0];
+                    }
+                }
+
+                return {
+                    ...state,
+                    manifest: action.payload,
+                    application: app ? app.code : state.application,
+                    view: view ? view.code : state.view,
+                };
+    
+            }
+
+            return state;
         case Types.SELECT_SHELL_MODULE:
             app = action.payload.application;
             view = action.payload.view;
