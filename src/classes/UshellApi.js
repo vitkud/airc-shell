@@ -70,12 +70,13 @@ class UApi {
                 },
                 body: JSON.stringify(data)
             })
-            .then((res) => res.json())
-            .then((res) => {
-                if (res.error) {
-                    reject(res);
+            .then(async (res) => {
+                if (res.status === 200) {
+                    var json = await res.json();
+                    resolve(json); 
                 } else {
-                    resolve(res);
+                    var text = await res.text();
+                    reject(text);
                 }
             });
 		});

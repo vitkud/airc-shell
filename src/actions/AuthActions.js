@@ -64,6 +64,8 @@ export const doAuth = (login, password, register = false) => {
         }
 
         action.then((res) => {
+                console.log('Auth res: ', res);
+
                 if (res.token && res.exp) {
                     dispatch(addShellSuccessNotify('Authorization complete'));
                     
@@ -79,19 +81,11 @@ export const doAuth = (login, password, register = false) => {
                         }
                     });
                 } else {
-                    dispatch(addShellErrorNotify(res.Data));
+                    dispatch(addShellErrorNotify(res));
                 }
             })
             .catch((e) => {
-                let text = '';
-
-                if (e.error) {
-                    text = e.error.message;
-                } else {
-                    text = e.toString();
-                }
-                
-                dispatch(addShellErrorNotify(text));
+                dispatch(addShellErrorNotify(e));
             });
     }
 };
