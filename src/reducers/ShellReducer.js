@@ -20,7 +20,6 @@ export default (state = INITIAL_STATE, action) => {
 
     switch (action.type) {
         case Types.INIT_APP: 
-            console.log('Shell initiation.');
             if (window && window.location && window.location.pathname) {
                 path = window.location.pathname;
 
@@ -31,9 +30,6 @@ export default (state = INITIAL_STATE, action) => {
                 if (arr[0]) app = arr[0];
                 if (arr[1]) view = arr[1];
 
-                console.log(`Selected app: ${app}`);
-                console.log(`Selected view: ${view}`);
-                
                 return {
                     ...state,
                     application: app || state.application,
